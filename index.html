@@ -1,0 +1,33 @@
+<!-- <!DOCTYPE html>
+<html>
+  <body>
+    <a
+      href="https://github.com/login/oauth/authorize?client_id=Ov23liCBjw9BRz1LDCcI&redirect_uri=http://localhost:3000/"
+    >
+      Login with github
+    </a>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+
+<html>
+    <body>
+        <h1>OAUTH2 EXAMPLEAAA</h1>
+        <h2><a href="https://github.com/login/oauth/authorize?scope={{ join .OAuthConfig.Scopes `,` }}&client_id=Ov23liVbvpkgcsS9guKf">
+            Sign In With Github</a>
+        </h2>
+        {{if not .AccessToken}}
+        <h1>HAS NOT ACCESS TOKEN</h1>
+        <h2><a href="https://github.com/login/oauth/authorize?scope={{ join .OAuthConfig.Scopes `,` }}&client_id={{ .OAuthConfig.ClientID }}">
+                Sign In With Github</a>
+        </h2>
+        {{else}}
+        <h2>HAS ACCESS TOKEN</h2>
+        {{end}}
+        {{if .UserInfo}}
+        <h2>Hello, {{.UserInfo.Login}}</h2>
+        <h3>ID.{{.UserInfo.ID}}</h3>
+        {{end}}
+    </body>
+</html>
